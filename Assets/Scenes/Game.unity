@@ -1102,6 +1102,13 @@ MonoBehaviour:
   gameTimer: 60
   countdown: {fileID: 2080383569}
   Score: {fileID: 1212204488}
+  Moles:
+  - {fileID: 1947195757}
+  - {fileID: 1899098917}
+  - {fileID: 1842465286}
+  - {fileID: 1088178088}
+  - {fileID: 25204598}
+  - {fileID: 975337085}
 --- !u!1 &1842465281
 GameObject:
   m_ObjectHideFlags: 0

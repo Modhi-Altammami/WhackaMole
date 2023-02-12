@@ -6,16 +6,17 @@ public class Mole : MonoBehaviour
 {
 
     [SerializeField] private bool MovingUp;
+    public bool setMovingUp { set { MovingUp = value; } get { return MovingUp; }}
     [SerializeField] private float Ydirection;
     [SerializeField] private float speed;
     [SerializeField] private float moleUpDuration;
+    private bool gameStart;
     private Vector3 startingPoint;
     
     // Start is called before the first frame update
     void Start()
     {
         startingPoint = transform.position;
-      
     }
 
     // Update is called once per frame
@@ -52,6 +53,7 @@ public class Mole : MonoBehaviour
         if (moleUpDuration < 1 &&MovingUp == true)
         {
             MovingUp = false;
+            GameManager.Instance.PopMole();
             moleUpDuration = 3;
         }
     }
@@ -73,5 +75,7 @@ public class Mole : MonoBehaviour
        MovingUp = false;
        moleUpDuration = 3;
        GameManager.Instance.updateScore();
+       GameManager.Instance.PopMole();
+
     }
 }
