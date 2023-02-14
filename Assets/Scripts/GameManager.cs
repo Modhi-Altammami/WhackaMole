@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Random;
+using Random = UnityEngine.Random;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI countdown;
     [SerializeField] private TextMeshProUGUI Score;
     [SerializeField] private Mole[] Moles;
+    private Mole cur;
     private float score;
     public static GameManager Instance;
 
@@ -49,10 +50,10 @@ public class GameManager : MonoBehaviour
 
     public void PopMole()
     {
-       Mole cur = Moles[Range(0, 6)];
+        cur = Moles[Random.Range(0, Moles.Length)];
         while (!cur.ISReady) 
         {
-                cur = Moles[Range(0, 6)];
+                cur = Moles[Random.Range(0, Moles.Length)];
         } 
        cur.setMovingUp=true;
        cur.GetComponent<Collider>().enabled = true;
