@@ -10,7 +10,7 @@ public class CursorEditor : MonoBehaviour
 
     void Start()
     {
-         cursorOffset = new Vector2(Hammer.width / 5, Hammer.height / 4);
+         cursorOffset = new Vector2(Hammer.width / 10, Hammer.height / 4);
 
         Cursor.SetCursor(Hammer, cursorOffset, CursorMode.ForceSoftware);
 
