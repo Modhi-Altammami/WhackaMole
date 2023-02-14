@@ -12,8 +12,6 @@ public class GameManager : MonoBehaviour
     private float score;
     public static GameManager Instance;
 
-
-
     void Awake()
     {
         if (Instance == null){
@@ -26,27 +24,19 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
        score= 0;
-        PopMole();
-
+       PopMole();
     }
 
     // Update is called once per frame
     void Update()
     {
-       
         gameTimer -= Time.deltaTime;
-      
-        // Convert integer to string
         countdown.text =gameTimer.ToString("0");
         if (gameTimer < 1)
         {
             countdown.text = "Finish";
-        }
-
-
-        
+        }  
     }
 
 
@@ -59,7 +49,12 @@ public class GameManager : MonoBehaviour
 
     public void PopMole()
     {
-        Moles[Range(0, 6)].setMovingUp=true;
-
+       Mole cur = Moles[Range(0, 6)];
+        while (!cur.ISReady) 
+        {
+                cur = Moles[Range(0, 6)];
+        } 
+       cur.setMovingUp=true;
+       cur.GetComponent<Collider>().enabled = true;
     }
 }

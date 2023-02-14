@@ -4,29 +4,27 @@ using UnityEngine;
 
 public class Mole : MonoBehaviour
 {
-
     [SerializeField] private bool MovingUp;
-    public bool setMovingUp { set { MovingUp = value; } get { return MovingUp; }}
     [SerializeField] private float Ydirection;
     [SerializeField] private float speed;
     [SerializeField] private float moleUpDuration;
-    private bool gameStart;
+    private float FixedMoleUpDuration;
+    private bool isReady;
     private Vector3 startingPoint;
-    
+    public bool setMovingUp { set { MovingUp = value; } get { return MovingUp; } }
+    public bool ISReady { set { isReady = value; } get { return isReady; } }
+
     // Start is called before the first frame update
     void Start()
     {
         startingPoint = transform.position;
+        FixedMoleUpDuration = moleUpDuration;
+        isReady = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (MovingUp == true)
-        {
-            moleUpDuration -= Time.deltaTime;
-        }
-
         if (MovingUp)
         {
             if (transform.position.y < Ydirection)
@@ -37,6 +35,8 @@ public class Mole : MonoBehaviour
             {
                 transform.position = new Vector3(startingPoint.x, Ydirection, startingPoint.z);
             }
+
+            moleUpDuration -= Time.deltaTime;
         }
         else
         {
@@ -47,14 +47,13 @@ public class Mole : MonoBehaviour
             else
             {
                 transform.position = startingPoint;
+                isReady = true;
             }
         }
 
         if (moleUpDuration < 1 &&MovingUp == true)
         {
-            MovingUp = false;
-            GameManager.Instance.PopMole();
-            moleUpDuration = 3;
+            Generate();
         }
     }
 
@@ -72,10 +71,18 @@ public class Mole : MonoBehaviour
 
     public void OnMouseDown()
     {
-       MovingUp = false;
-       moleUpDuration = 3;
        GameManager.Instance.updateScore();
-       GameManager.Instance.PopMole();
+       Generate();
 
+    }
+
+
+    void Generate()
+    {
+        gameObject.GetComponent<Collider>().enabled = false;
+        MovingUp = false;
+        isReady = false;
+        GameManager.Instance.PopMole();
+        moleUpDuration = FixedMoleUpDuration;
     }
 }
