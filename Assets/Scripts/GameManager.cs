@@ -8,8 +8,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float gameTimer;
     [SerializeField] private TextMeshProUGUI countdown;
     [SerializeField] private TextMeshProUGUI Score;
+    [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private Mole[] Moles;
+
     private Mole cur;
+    private bool stopGame;
     private float score;
     public static GameManager Instance;
 
@@ -21,6 +24,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        stopGame = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -37,6 +41,9 @@ public class GameManager : MonoBehaviour
         if (gameTimer < 1)
         {
             countdown.text = "Finish";
+            gameTimer = 0;
+            if(!stopGame)
+            GameOver();
         }  
     }
 
@@ -57,5 +64,19 @@ public class GameManager : MonoBehaviour
         } 
        cur.setMovingUp=true;
        cur.GetComponent<Collider>().enabled = true;
+    }
+
+
+    public void GameOver()
+    {
+        stopGame = true;
+        foreach(Mole mole in Moles)
+        {
+            cur.setMovingUp = false;
+
+        }
+        Debug.Log("Here");
+        LeanTween.scale(gameOverPanel, new Vector3(5f, 3f, 1f), 2f).setDelay(0.5f).setEase(LeanTweenType.easeOutElastic);
+
     }
 }
