@@ -18,6 +18,8 @@ namespace Modhi.WhackAMole
         private Mole cur;
         private bool stopGame;
         private float score;
+        private AudioSource Pop;
+
         public static GameManager Instance;
 
         void Awake()
@@ -35,8 +37,10 @@ namespace Modhi.WhackAMole
         // Start is called before the first frame update
         void Start()
         {
+            Pop = GetComponent<AudioSource>();
             score = 0;
             PopMole();
+
         }
 
         // Update is called once per frame
@@ -82,6 +86,7 @@ namespace Modhi.WhackAMole
 
             }
             GameAnimation.Instance.Scale(gameOverPanel);
+            Pop.Play();
         }
     }
 }
