@@ -81,7 +81,6 @@ namespace Modhi.WhackAMole
                 cur.setMovingUp = false;
 
             }
-            Debug.Log("Here");
             GameAnimation.Instance.Scale(gameOverPanel);
         }
     }
