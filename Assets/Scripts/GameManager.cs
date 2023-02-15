@@ -86,7 +86,7 @@ namespace Modhi.WhackAMole
 
             }
             GameAnimation.Instance.Scale(gameOverPanel);
-            Pop.Play();
+          Pop.Play();
         }
     }
 }
