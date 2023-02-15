@@ -2,20 +2,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class SceneChanger : MonoBehaviour
+namespace Modhi.WhackAMole
 {
-    public void StartGame()
-    {
-        SceneManager.LoadScene("Game");
-    }
 
-    public void GoBack()
+    public class SceneChanger : MonoBehaviour
     {
-        SceneManager.LoadScene("Intro");
-    }
+        public void StartGame()
+        {
+            SceneManager.LoadScene("Game");
+        }
 
-    public void RestartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        public void GoBack()
+        {
+            SceneManager.LoadScene("Intro");
+        }
+
+        public void RestartGame()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

@@ -2,31 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CursorEditor : MonoBehaviour
+
+
+namespace Modhi.WhackAMole
 {
-    [SerializeField] Texture2D Hammer;
-    [SerializeField] Texture2D HitHammer;
-    private Vector2 cursorOffset;
-
-    void Start()
+    public class CursorEditor : MonoBehaviour
     {
-         cursorOffset = new Vector2(Hammer.width / 10, Hammer.height / 4);
+        [SerializeField] Texture2D Hammer;
+        [SerializeField] Texture2D HitHammer;
+        private Vector2 cursorOffset;
 
-        Cursor.SetCursor(Hammer, cursorOffset, CursorMode.ForceSoftware);
-
-    }
-
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
+        void Start()
         {
-            Cursor.SetCursor(HitHammer, cursorOffset, CursorMode.ForceSoftware);
-        }
+            cursorOffset = new Vector2(Hammer.width / 10, Hammer.height / 4);
 
-        if (Input.GetMouseButtonUp(0))
-        {
             Cursor.SetCursor(Hammer, cursorOffset, CursorMode.ForceSoftware);
+
         }
+
+        void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Cursor.SetCursor(HitHammer, cursorOffset, CursorMode.ForceSoftware);
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                Cursor.SetCursor(Hammer, cursorOffset, CursorMode.ForceSoftware);
+            }
+        }
+
     }
-    
 }

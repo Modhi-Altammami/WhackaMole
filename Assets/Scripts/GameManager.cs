@@ -3,80 +3,86 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using TMPro;
-public class GameManager : MonoBehaviour
+
+
+namespace Modhi.WhackAMole
 {
-    [SerializeField] private float gameTimer;
-    [SerializeField] private TextMeshProUGUI countdown;
-    [SerializeField] private TextMeshProUGUI Score;
-    [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private Mole[] Moles;
-
-    private Mole cur;
-    private bool stopGame;
-    private float score;
-    public static GameManager Instance;
-
-    void Awake()
+    public class GameManager : MonoBehaviour
     {
-        if (Instance == null){
-            Instance = this;
-        }else
+        [SerializeField] private float gameTimer;
+        [SerializeField] private TextMeshProUGUI countdown;
+        [SerializeField] private TextMeshProUGUI Score;
+        [SerializeField] private GameObject gameOverPanel;
+        [SerializeField] private Mole[] Moles;
+
+        private Mole cur;
+        private bool stopGame;
+        private float score;
+        public static GameManager Instance;
+
+        void Awake()
         {
-            Destroy(gameObject);
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            stopGame = false;
         }
-        stopGame = false;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-       score= 0;
-       PopMole();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        gameTimer -= Time.deltaTime;
-        countdown.text =gameTimer.ToString("0");
-        if (gameTimer < 1)
+        // Start is called before the first frame update
+        void Start()
         {
-            countdown.text = "Finish";
-            gameTimer = 0;
-            if(!stopGame)
-            GameOver();
-        }  
-    }
+            score = 0;
+            PopMole();
+        }
 
-
-   public void updateScore()
-    {
-        score++;
-        Score.text = score.ToString("0");
-
-    }
-
-    public void PopMole()
-    {
-        cur = Moles[Random.Range(0, Moles.Length)];
-        while (!cur.ISReady) 
+        // Update is called once per frame
+        void Update()
         {
+            gameTimer -= Time.deltaTime;
+            countdown.text = gameTimer.ToString("0");
+            if (gameTimer < 1)
+            {
+                countdown.text = "Finish";
+                gameTimer = 0;
+                if (!stopGame)
+                    GameOver();
+            }
+        }
+
+
+        public void updateScore()
+        {
+            score++;
+            Score.text = score.ToString("0");
+
+        }
+
+        public void PopMole()
+        {
+            cur = Moles[Random.Range(0, Moles.Length)];
+            while (!cur.ISReady)
+            {
                 cur = Moles[Random.Range(0, Moles.Length)];
-        } 
-       cur.setMovingUp=true;
-       cur.GetComponent<Collider>().enabled = true;
-    }
-
-
-    public void GameOver()
-    {
-        stopGame = true;
-        foreach(Mole mole in Moles)
-        {
-            cur.setMovingUp = false;
-
+            }
+            cur.setMovingUp = true;
+            cur.GetComponent<Collider>().enabled = true;
         }
-        Debug.Log("Here");
-        LeanTween.scale(gameOverPanel, new Vector3(5f, 3f, 1f), 2f).setDelay(0.5f).setEase(LeanTweenType.easeOutElastic);
 
+
+        public void GameOver()
+        {
+            stopGame = true;
+            foreach (Mole mole in Moles)
+            {
+                cur.setMovingUp = false;
+
+            }
+            Debug.Log("Here");
+            GameAnimation.Instance.Scale(gameOverPanel);
+        }
     }
 }
