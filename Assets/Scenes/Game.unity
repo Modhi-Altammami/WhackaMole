@@ -298,10 +298,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.7447847
+  m_Radius: 0.92246854
+  m_Height: 1.9470656
   m_Direction: 1
-  m_Center: {x: -0, y: 0.37239236, z: 0}
+  m_Center: {x: 0.13823116, y: 0.5404819, z: 0}
 --- !u!1001 &62476034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -535,10 +535,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.0140147
+  m_Radius: 0.93313396
+  m_Height: 2.160967
   m_Direction: 1
-  m_Center: {x: 0, y: 0.50700736, z: 0}
+  m_Center: {x: -0.0039099455, y: 0.6474327, z: 0}
 --- !u!1 &194679608
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,10 +775,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.8027616
+  m_Radius: 0.8057952
+  m_Height: 1.9470656
   m_Direction: 1
-  m_Center: {x: -0, y: 0.40138078, z: -0}
+  m_Center: {x: 0.021557808, y: 0.5404819, z: 0}
 --- !u!4 &321415830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e037d211b70dd8f4b99b183b7a0093a6, type: 3}
@@ -877,10 +877,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.7816362
+  m_Radius: 0.8057952
+  m_Height: 1.9470656
   m_Direction: 1
-  m_Center: {x: 0, y: 0.39081812, z: -0}
+  m_Center: {x: 0.021557808, y: 0.5404819, z: 0}
 --- !u!1 &338361445
 GameObject:
   m_ObjectHideFlags: 0
@@ -4127,10 +4127,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.8450122
+  m_Radius: 0.961578
+  m_Height: 2.083478
   m_Direction: 1
-  m_Center: {x: -0, y: 0.4225061, z: 0}
+  m_Center: {x: -0.0044127703, y: 0.6086881, z: 0}
 --- !u!1001 &1917506510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4318,10 +4318,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.7605109
+  m_Radius: 0.71633065
+  m_Height: 1.882677
   m_Direction: 1
-  m_Center: {x: -0, y: 0.38025546, z: -0}
+  m_Center: {x: 0.0149611235, y: 0.44133848, z: 0}
 --- !u!1001 &2071772144
 PrefabInstance:
   m_ObjectHideFlags: 0
