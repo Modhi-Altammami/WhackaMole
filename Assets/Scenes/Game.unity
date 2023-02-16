@@ -1753,7 +1753,6 @@ GameObject:
   - component: {fileID: 803571050}
   - component: {fileID: 803571049}
   - component: {fileID: 803571051}
-  - component: {fileID: 803571052}
   - component: {fileID: 803571053}
   m_Layer: 0
   m_Name: GameManager
@@ -1812,19 +1811,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f4902d0feebcb47bd6c3cfe1058952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &803571052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 803571048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 751117d8738bbd748863de54ea5b287c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mole: {fileID: 1269246114}
 --- !u!82 &803571053
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2950,8 +2936,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1269246115}
+  - component: {fileID: 1269246116}
   m_Layer: 0
-  m_Name: EmptyObject
+  m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2972,6 +2959,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1269246116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269246114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751117d8738bbd748863de54ea5b287c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mole: {fileID: 1269246114}
 --- !u!1001 &1311935011
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 namespace Modhi.WhackAMole
 {
     [RequireComponent(typeof(CapsuleCollider))]
@@ -15,6 +16,9 @@ namespace Modhi.WhackAMole
         private Vector3 startingPoint;
         public bool setMovingUp { set { MovingUp = value; } get { return MovingUp; } }
         public bool ISReady { set { isReady = value; } get { return isReady; } }
+
+        public event Action UpdateScoreEvent;
+        public event Action PopMoleEvent;
 
         // Start is called before the first frame update
         void Start()
@@ -73,7 +77,7 @@ namespace Modhi.WhackAMole
 
         public void OnMouseDown()
         {
-            GameManager.Instance.updateScore();
+           UpdateScoreEvent? .Invoke();
             Generate();
 
         }
@@ -84,7 +88,7 @@ namespace Modhi.WhackAMole
             gameObject.GetComponent<Collider>().enabled = false;
             MovingUp = false;
             isReady = false;
-            GameManager.Instance.PopMole();
+            PopMoleEvent? .Invoke();
             moleUpDuration = FixedMoleUpDuration;
         }
     }

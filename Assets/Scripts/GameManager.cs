@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using TMPro;
-
+using System;
 
 namespace Modhi.WhackAMole
 {
@@ -19,8 +19,8 @@ namespace Modhi.WhackAMole
         private bool stopGame;
         private float score;
         private AudioSource Pop;
-
         public static GameManager Instance;
+        public static event Action<GameObject> ScaleEvent;
 
         void Awake()
         {
@@ -33,14 +33,22 @@ namespace Modhi.WhackAMole
                 Destroy(gameObject);
             }
             stopGame = false;
+
+            foreach(Mole mole in Moles)
+            {
+                mole.UpdateScoreEvent += updateScore;
+                mole.PopMoleEvent += PopMole;
+            }
+            
+
+           
         }
         // Start is called before the first frame update
         void Start()
         {
             Pop = GetComponent<AudioSource>();
             score = 0;
-            PopMole();
-
+            PopMole();   
         }
 
         // Update is called once per frame
@@ -54,15 +62,18 @@ namespace Modhi.WhackAMole
                 gameTimer = 0;
                 if (!stopGame)
                     GameOver();
-            }
+            }    
         }
-
 
         public void updateScore()
         {
             score++;
             Score.text = score.ToString("0");
-
+            if ((int)score > GetScore("Score"))
+            {
+                SetScore((int)score);
+                PopMole();
+            }
         }
 
         public void PopMole()
@@ -85,8 +96,19 @@ namespace Modhi.WhackAMole
                 cur.setMovingUp = false;
 
             }
-            GameAnimation.Instance.Scale(gameOverPanel);
+          //GameAnimation.Instance.Scale(gameOverPanel);
+            ScaleEvent?.Invoke(gameOverPanel);
           Pop.Play();
+        }
+
+        public void SetScore(int Value)
+        {
+            PlayerPrefs.SetInt("Score", Value);
+        }
+
+        public int GetScore(string KeyName)
+        {
+            return PlayerPrefs.GetInt(KeyName);
         }
     }
 }

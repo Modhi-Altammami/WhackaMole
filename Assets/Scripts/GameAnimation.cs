@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 namespace Modhi.WhackAMole
 {
     
@@ -11,6 +9,8 @@ namespace Modhi.WhackAMole
     {
         [SerializeField] private GameObject mole;
         public static GameAnimation Instance;
+        
+
 
         void Awake()
         {
@@ -20,7 +20,7 @@ namespace Modhi.WhackAMole
             {
                 Destroy(gameObject);
             }
-
+            GameManager.ScaleEvent += Scale;
             ScaleLoop(mole);
         }
 
@@ -37,7 +37,7 @@ namespace Modhi.WhackAMole
 
         public void ScaleLoop(GameObject gameObject)
         {
-            LeanTween.scale(gameObject, new Vector3(5.5f, 3.5f, 1f), 0.5f).setLoopPingPong();
+            LeanTween.scale(gameObject, new Vector3(1.2f, 1.2f, 1f), 0.5f).setLoopPingPong();
 
         }
     }

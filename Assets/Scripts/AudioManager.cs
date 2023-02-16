@@ -1,27 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class AudioManager : MonoBehaviour
+namespace Modhi.WhackAMole
 {
-    public static AudioManager instance;
-    
-    void Awake()
+    public class AudioManager : MonoBehaviour
     {
-        if (instance == null) // if instance is not initilized then instance is equal to class
-            instance = this;
-        else
+        public static AudioManager instance;
+
+        void Awake()
         {
-            Destroy(gameObject);
+            if (instance == null) // if instance is not initilized then instance is equal to class
+                instance = this;
+            else
+            {
+                Destroy(gameObject);
+            }
+
+        }
+
+        // Update is called once per frame
+        void Start()
+        {
+            DontDestroyOnLoad(gameObject);
+
         }
 
     }
-
-    // Update is called once per frame
-    void Start()
-    {
-        DontDestroyOnLoad(gameObject);
- 
-    }
-
 }
