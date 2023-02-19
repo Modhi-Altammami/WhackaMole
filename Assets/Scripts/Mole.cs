@@ -16,9 +16,9 @@ namespace Modhi.WhackAMole
         private Vector3 startingPoint;
         public bool setMovingUp { set { MovingUp = value; } get { return MovingUp; } }
         public bool ISReady { set { isReady = value; } get { return isReady; } }
-
         public event Action UpdateScoreEvent;
         public event Action PopMoleEvent;
+       // public event Action<Vector3> ParticleSystemEvent;
 
         // Start is called before the first frame update
         void Start()
@@ -78,7 +78,7 @@ namespace Modhi.WhackAMole
         public void OnMouseDown()
         {
            UpdateScoreEvent? .Invoke();
-            Generate();
+           Generate();
 
         }
 
@@ -89,6 +89,7 @@ namespace Modhi.WhackAMole
             MovingUp = false;
             isReady = false;
             PopMoleEvent? .Invoke();
+          //  ParticleSystemEvent?.Invoke(transform.position);
             moleUpDuration = FixedMoleUpDuration;
         }
     }

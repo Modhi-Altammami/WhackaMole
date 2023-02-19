@@ -14,6 +14,7 @@ namespace Modhi.WhackAMole
         [SerializeField] private TextMeshProUGUI Score;
         [SerializeField] private GameObject gameOverPanel;
         [SerializeField] private Mole[] Moles;
+        [SerializeField] ParticleSystem particleSystem;
 
         private Mole cur;
         private bool stopGame;
@@ -37,6 +38,7 @@ namespace Modhi.WhackAMole
             foreach(Mole mole in Moles)
             {
                 mole.UpdateScoreEvent += updateScore;
+               // mole.ParticleSystemEvent += displaychunk;
                 mole.PopMoleEvent += PopMole;
             }
             
@@ -65,7 +67,7 @@ namespace Modhi.WhackAMole
             }    
         }
 
-        public void updateScore()
+         void updateScore()
         {
             score++;
             Score.text = score.ToString("0");
@@ -74,9 +76,11 @@ namespace Modhi.WhackAMole
                 SetScore((int)score);
                 PopMole();
             }
+
+           
         }
 
-        public void PopMole()
+         void PopMole()
         {
             cur = Moles[Random.Range(0, Moles.Length)];
             while (!cur.ISReady)
@@ -85,10 +89,11 @@ namespace Modhi.WhackAMole
             }
             cur.setMovingUp = true;
             cur.GetComponent<Collider>().enabled = true;
+            displaychunk(cur.transform.position);
         }
 
 
-        public void GameOver()
+         void GameOver()
         {
             stopGame = true;
             foreach (Mole mole in Moles)
@@ -98,17 +103,24 @@ namespace Modhi.WhackAMole
             }
           //GameAnimation.Instance.Scale(gameOverPanel);
             ScaleEvent?.Invoke(gameOverPanel);
-          Pop.Play();
+            Pop.Play();
         }
 
-        public void SetScore(int Value)
+         void SetScore(int Value)
         {
             PlayerPrefs.SetInt("Score", Value);
         }
 
-        public int GetScore(string KeyName)
+         int GetScore(string KeyName)
         {
             return PlayerPrefs.GetInt(KeyName);
         }
+
+        void displaychunk(Vector3 pos)
+        {
+            particleSystem.Play();
+            particleSystem.transform.position = new Vector3(pos.x ,3 ,pos.z);
+        }
     }
+
 }

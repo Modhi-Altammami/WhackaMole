@@ -24,18 +24,18 @@ namespace Modhi.WhackAMole
             ScaleLoop(mole);
         }
 
-        public void MoveLoop(GameObject gameObject)
+         void MoveLoop(GameObject gameObject)
         {
             LeanTween.moveY(gameObject.GetComponent<RectTransform>(), 50f, 1f).setLoopPingPong();
         }
 
-        public void Scale(GameObject gameObject)
+         void Scale(GameObject gameObject)
         {
             LeanTween.scale(gameObject, new Vector3(5f, 3f, 1f), 2f).setDelay(0.5f).setEase(LeanTweenType.easeOutElastic);
 
         }
 
-        public void ScaleLoop(GameObject gameObject)
+         void ScaleLoop(GameObject gameObject)
         {
             LeanTween.scale(gameObject, new Vector3(1.2f, 1.2f, 1f), 0.5f).setLoopPingPong();
 
