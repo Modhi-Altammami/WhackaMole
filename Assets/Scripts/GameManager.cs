@@ -69,6 +69,7 @@ namespace Modhi.WhackAMole
 
          void updateScore()
         {
+            displaychunk(cur.transform.position);
             score++;
             Score.text = score.ToString("0");
             if ((int)score > GetScore("Score"))
@@ -89,7 +90,7 @@ namespace Modhi.WhackAMole
             }
             cur.setMovingUp = true;
             cur.GetComponent<Collider>().enabled = true;
-            displaychunk(cur.transform.position);
+            //displaychunk(cur.transform.position);
         }
 
 
