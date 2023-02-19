@@ -1784,7 +1784,7 @@ MonoBehaviour:
   - {fileID: 312761218}
   - {fileID: 323170743}
   - {fileID: 1885452758}
-  particleSystem: {fileID: 1270586405}
+  particle: {fileID: 1270586405}
 --- !u!4 &803571050
 Transform:
   m_ObjectHideFlags: 0
@@ -3315,7 +3315,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.1
       minScalar: 0.2
       maxCurve:
         serializedVersion: 2

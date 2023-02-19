@@ -14,7 +14,8 @@ namespace Modhi.WhackAMole
         [SerializeField] private TextMeshProUGUI Score;
         [SerializeField] private GameObject gameOverPanel;
         [SerializeField] private Mole[] Moles;
-        [SerializeField] ParticleSystem particleSystem;
+        [SerializeField] private ParticleSystem particle;
+
 
         private Mole cur;
         private bool stopGame;
@@ -38,7 +39,6 @@ namespace Modhi.WhackAMole
             foreach(Mole mole in Moles)
             {
                 mole.UpdateScoreEvent += updateScore;
-               // mole.ParticleSystemEvent += displaychunk;
                 mole.PopMoleEvent += PopMole;
             }
             
@@ -102,7 +102,6 @@ namespace Modhi.WhackAMole
                 cur.setMovingUp = false;
 
             }
-          //GameAnimation.Instance.Scale(gameOverPanel);
             ScaleEvent?.Invoke(gameOverPanel);
             Pop.Play();
         }
@@ -119,9 +118,10 @@ namespace Modhi.WhackAMole
 
         void displaychunk(Vector3 pos)
         {
-            particleSystem.Play();
-            particleSystem.transform.position = new Vector3(pos.x ,3 ,pos.z);
+            particle.Play();
+            particle.transform.position = new Vector3(pos.x ,3 ,pos.z);
         }
+
     }
 
 }
